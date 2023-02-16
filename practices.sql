@@ -1,137 +1,112 @@
--- phpMyAdmin SQL Dump
--- version 5.2.0
--- https://www.phpmyadmin.net/
+-- MySQL dump 10.13  Distrib 8.0.32, for Win64 (x86_64)
 --
--- Host: 127.0.0.1
--- Generation Time: Dec 08, 2022 at 01:28 PM
--- Server version: 10.4.27-MariaDB
--- PHP Version: 8.0.25
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-START TRANSACTION;
-SET time_zone = "+00:00";
-
+-- Host: localhost    Database: practices
+-- ------------------------------------------------------
+-- Server version	8.0.32
 
 /*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
 /*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
 /*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
---
--- Database: `practices`
---
-
--- --------------------------------------------------------
+/*!50503 SET NAMES utf8 */;
+/*!40103 SET @OLD_TIME_ZONE=@@TIME_ZONE */;
+/*!40103 SET TIME_ZONE='+00:00' */;
+/*!40014 SET @OLD_UNIQUE_CHECKS=@@UNIQUE_CHECKS, UNIQUE_CHECKS=0 */;
+/*!40014 SET @OLD_FOREIGN_KEY_CHECKS=@@FOREIGN_KEY_CHECKS, FOREIGN_KEY_CHECKS=0 */;
+/*!40101 SET @OLD_SQL_MODE=@@SQL_MODE, SQL_MODE='NO_AUTO_VALUE_ON_ZERO' */;
+/*!40111 SET @OLD_SQL_NOTES=@@SQL_NOTES, SQL_NOTES=0 */;
 
 --
 -- Table structure for table `customer`
 --
 
+DROP TABLE IF EXISTS `customer`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `customer` (
-  `CUSTOMERID` int(11) NOT NULL,
-  `FIRSTNAME` varchar(10) DEFAULT NULL,
-  `LASTNAME` varchar(10) DEFAULT NULL,
-  `CITY` varchar(10) DEFAULT NULL,
-  `STATE` varchar(10) DEFAULT NULL,
-  `ZIP` varchar(10) DEFAULT NULL
+  `CUSTOMERID` int NOT NULL,
+  `FIRSTNAME` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `LASTNAME` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `CITY` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `STATE` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `ZIP` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`CUSTOMERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `customer`
 --
 
-INSERT INTO `customer` (`CUSTOMERID`, `FIRSTNAME`, `LASTNAME`, `CITY`, `STATE`, `ZIP`) VALUES
-(101, 'AENIJ', 'JINDANI', 'PORBANDAR', 'GUJARAT', '360550'),
-(102, 'MOHNISH', 'JINDANI', 'PORBANDAR', 'GUJARAT', '360550'),
-(103, 'ASHIK', 'PIRANI', 'HYDERABAD', 'TELANGANA', '500001'),
-(104, 'ARIF', 'KHETANI', 'HYDERABAD', 'TELANGANA', '500016'),
-(105, 'ROHIT', 'HAMDANI', 'KESHOD', 'GUJARAT', '360001');
-
--- --------------------------------------------------------
+LOCK TABLES `customer` WRITE;
+/*!40000 ALTER TABLE `customer` DISABLE KEYS */;
+INSERT INTO `customer` VALUES (101,'AENIJ','JINDANI','PORBANDAR','GUJARAT','360550'),(102,'MOHNISH','JINDANI','PORBANDAR','GUJARAT','360550'),(103,'ASHIK','PIRANI','HYDERABAD','TELANGANA','500001'),(104,'ARIF','KHETANI','HYDERABAD','TELANGANA','500016'),(105,'ROHIT','HAMDANI','KESHOD','GUJARAT','360001'),(106,'MANSI','JOSHI','MUMBAI','MH','400001');
+/*!40000 ALTER TABLE `customer` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `product`
 --
 
+DROP TABLE IF EXISTS `product`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `product` (
-  `PRD_ID` int(11) NOT NULL,
-  `PRD_NAME` varchar(10) DEFAULT NULL,
-  `RECOMMENDED_PRICE` int(11) DEFAULT NULL,
-  `CATEGORY` varchar(10) DEFAULT NULL
+  `PRD_ID` int NOT NULL,
+  `PRD_NAME` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  `RECOMMENDED_PRICE` int DEFAULT NULL,
+  `CATEGORY` varchar(10) COLLATE utf8mb4_general_ci DEFAULT NULL,
+  PRIMARY KEY (`PRD_ID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `product`
 --
 
-INSERT INTO `product` (`PRD_ID`, `PRD_NAME`, `RECOMMENDED_PRICE`, `CATEGORY`) VALUES
-(1, 'COLGATE', 75, 'TOOTHPASTE'),
-(2, 'MAXFRESH', 65, 'TOOTHPASTE'),
-(3, 'HIMALIYA', 55, 'FACEWASH'),
-(4, 'GARNIER', 60, 'FACEWASH'),
-(5, 'VLC', 70, 'FACEWASH');
-
--- --------------------------------------------------------
+LOCK TABLES `product` WRITE;
+/*!40000 ALTER TABLE `product` DISABLE KEYS */;
+INSERT INTO `product` VALUES (1,'COLGATE',75,'TOOTHPASTE'),(2,'MAXFRESH',65,'TOOTHPASTE'),(3,'HIMALIYA',55,'FACEWASH'),(4,'GARNIER',60,'FACEWASH'),(5,'VLC',70,'FACEWASH');
+/*!40000 ALTER TABLE `product` ENABLE KEYS */;
+UNLOCK TABLES;
 
 --
 -- Table structure for table `sales`
 --
 
+DROP TABLE IF EXISTS `sales`;
+/*!40101 SET @saved_cs_client     = @@character_set_client */;
+/*!50503 SET character_set_client = utf8mb4 */;
 CREATE TABLE `sales` (
-  `SALES_ID` int(11) NOT NULL,
-  `PRD_ID` int(11) DEFAULT NULL,
-  `CUST_ID` int(11) DEFAULT NULL,
-  `SALESPRICE` int(11) DEFAULT NULL,
-  `SALESDATE` date DEFAULT NULL
+  `SALES_ID` int NOT NULL,
+  `PRD_ID` int DEFAULT NULL,
+  `CUST_ID` int DEFAULT NULL,
+  `SALESPRICE` int DEFAULT NULL,
+  `SALESDATE` date DEFAULT NULL,
+  PRIMARY KEY (`SALES_ID`),
+  KEY `PRD_ID` (`PRD_ID`),
+  KEY `CUST_ID` (`CUST_ID`),
+  CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`PRD_ID`) REFERENCES `product` (`PRD_ID`),
+  CONSTRAINT `sales_ibfk_2` FOREIGN KEY (`CUST_ID`) REFERENCES `customer` (`CUSTOMERID`)
 ) ENGINE=InnoDB DEFAULT CHARSET=utf8mb4 COLLATE=utf8mb4_general_ci;
+/*!40101 SET character_set_client = @saved_cs_client */;
 
 --
 -- Dumping data for table `sales`
 --
 
-INSERT INTO `sales` (`SALES_ID`, `PRD_ID`, `CUST_ID`, `SALESPRICE`, `SALESDATE`) VALUES
-(401, 2, 104, 100, '0000-00-00'),
-(402, 5, 103, 120, '0000-00-00'),
-(403, 1, 101, 90, '0000-00-00'),
-(404, 5, 102, 100, '0000-00-00'),
-(405, 2, 102, 120, '0000-00-00');
+LOCK TABLES `sales` WRITE;
+/*!40000 ALTER TABLE `sales` DISABLE KEYS */;
+INSERT INTO `sales` VALUES (401,2,104,100,'2020-12-09'),(402,5,103,120,'2020-10-25'),(403,1,101,90,'2022-03-11'),(404,5,102,100,'2022-03-17'),(405,2,102,120,'2022-08-10'),(406,3,106,205,'2022-12-05');
+/*!40000 ALTER TABLE `sales` ENABLE KEYS */;
+UNLOCK TABLES;
+/*!40103 SET TIME_ZONE=@OLD_TIME_ZONE */;
 
---
--- Indexes for dumped tables
---
-
---
--- Indexes for table `customer`
---
-ALTER TABLE `customer`
-  ADD PRIMARY KEY (`CUSTOMERID`);
-
---
--- Indexes for table `product`
---
-ALTER TABLE `product`
-  ADD PRIMARY KEY (`PRD_ID`);
-
---
--- Indexes for table `sales`
---
-ALTER TABLE `sales`
-  ADD PRIMARY KEY (`SALES_ID`),
-  ADD KEY `PRD_ID` (`PRD_ID`),
-  ADD KEY `CUST_ID` (`CUST_ID`);
-
---
--- Constraints for dumped tables
---
-
---
--- Constraints for table `sales`
---
-ALTER TABLE `sales`
-  ADD CONSTRAINT `sales_ibfk_1` FOREIGN KEY (`PRD_ID`) REFERENCES `product` (`PRD_ID`),
-  ADD CONSTRAINT `sales_ibfk_2` FOREIGN KEY (`CUST_ID`) REFERENCES `customer` (`CUSTOMERID`);
-COMMIT;
-
+/*!40101 SET SQL_MODE=@OLD_SQL_MODE */;
+/*!40014 SET FOREIGN_KEY_CHECKS=@OLD_FOREIGN_KEY_CHECKS */;
+/*!40014 SET UNIQUE_CHECKS=@OLD_UNIQUE_CHECKS */;
 /*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
 /*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
 /*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;
+/*!40111 SET SQL_NOTES=@OLD_SQL_NOTES */;
+
+-- Dump completed on 2023-02-16 17:21:27
